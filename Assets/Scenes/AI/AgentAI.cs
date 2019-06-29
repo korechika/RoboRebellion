@@ -13,6 +13,7 @@ public class AgentAI : MonoBehaviour
     {
         _navAgent = GetComponent<NavMeshAgent>();
         _navAgent.avoidancePriority = AgentAI.Priority++;
+        transform.localEulerAngles = Random.Range(0, 360) * Vector3.up;
     }
 
     void Update()
@@ -27,7 +28,7 @@ public class AgentAI : MonoBehaviour
 
     public void ChangeDestination()
     {
-        float range = 1.5f;
+        float range = 4.5f;
         _navAgent.destination = range * new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
     }
 

@@ -9,7 +9,7 @@ public class Agents : MonoBehaviour
 
     void Start()
     {
-        float range = 1.5f;
+        float range = 4.5f;
 
         for (int i = 0; i < AgentAICount; i++)
         {
