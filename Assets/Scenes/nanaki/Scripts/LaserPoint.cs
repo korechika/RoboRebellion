@@ -66,17 +66,22 @@ public class LaserPoint : MonoBehaviour
         if (Physics.Raycast(pointerRay, out hitInfo, _MaxDistance))
         {
             // Rayがヒットしたらそこまで
-            if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
+            if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger) || OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
+                Debug.Log("うったよ");
+
                 sound.Play();
                 bullet--;
-                if(hitInfo.transform.name == "AgentHuman")
+                if(hitInfo.transform.name == "AgentHuman" )
                 {
                     gm.Result(true);
                 }
 
                 if (bullet <= 0)
+                {
+                    Destroy(_LaserPointerRenderer);
                     gm.Result(false);
+                }
 
                 
 
