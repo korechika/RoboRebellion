@@ -50,6 +50,12 @@ public class ClientPositionReceiver : MonoBehaviour
             Debug.Log("pos:" + pos + ", rot:" + rot);
             UpdateTransform(cube);
             // m_onTransformReceived.Invoke (pos, rot);
+        } else if (msgs.Length == 1)
+        {
+            if (msg == "clientwon")
+            {
+                // youlose
+            }
         }
     }
 
