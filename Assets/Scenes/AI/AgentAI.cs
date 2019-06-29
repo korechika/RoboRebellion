@@ -27,7 +27,8 @@ public class AgentAI : MonoBehaviour
 
     public void ChangeDestination()
     {
-        _navAgent.destination = new Vector3(Random.Range(-4.5f, 4.5f), 0, Random.Range(-4.5f, 4.5f));
+        float range = 1.5f;
+        _navAgent.destination = range * new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
     }
 
     public bool HasArrivedDestination()
