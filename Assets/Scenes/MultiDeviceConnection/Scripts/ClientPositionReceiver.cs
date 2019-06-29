@@ -5,12 +5,23 @@ using uOSC;
 
 public class ClientPositionReceiver : MonoBehaviour
 {
+    public Vector3 clientPos { get; private set; }
+    public Vector3 clientRot { get; private set; }
     uOscServer server;
+    GameObject cube;
 
     void Awake()
     {
         server = GetComponent<uOscServer>();
         server.onDataReceived.AddListener(OnDataReceived);
+    }
+
+    void Start() {
+        clientPos = Vector3.zero;
+        clientRot = Vector3.zero;
+        cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cube.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        UpdateTransform(cube);
     }
 
     void OnDataReceived(Message message)
@@ -31,16 +42,24 @@ public class ClientPositionReceiver : MonoBehaviour
         if (msgs.Length == 6) {
             Vector3 pos = GetPositionFromMsg (msgs);
             Vector3 rot = GetRotationFromMsg (msgs);
+            clientPos = pos;
+            clientRot = rot;
             Debug.Log("pos:" + pos + ", rot:" + rot);
+            UpdateTransform(cube);
             // m_onTransformReceived.Invoke (pos, rot);
         }
     }
 
-    private Vector3 GetPositionFromMsg (string[] msgs) {
+    Vector3 GetPositionFromMsg (string[] msgs) {
         return new Vector3 (float.Parse(msgs [0]), float.Parse(msgs [1]), float.Parse(msgs [2]));
     }
 
-    private Vector3 GetRotationFromMsg (string[] msgs) {
+    Vector3 GetRotationFromMsg (string[] msgs) {
         return new Vector3 (float.Parse(msgs [3]), float.Parse(msgs [4]), float.Parse(msgs [5]));
+    }
+
+    void UpdateTransform(GameObject obj) {
+        obj.transform.position = clientPos;
+        obj.transform.eulerAngles = clientRot;
     }
 }

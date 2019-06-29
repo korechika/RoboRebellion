@@ -5,16 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MultiDeviceConnection/Server.unity
     guid: 693ffb6b60d8745be8a2b08b93df6a0b
   - enabled: 0
-    path: Assets/GoogleARCore/Examples/HelloAR/Scenes/HelloAR.unity
-    guid: e6a6fa04348cb45c9b0221eb19c946da
-  - enabled: 0
-    path: Assets/Scenes/MultiDeviceConnection/ARCoreClient.unity
-    guid: d2eb0b564102b460ebd75da6bd5d94db
-  - enabled: 1
     path: Assets/Scenes/MultiDeviceConnection/Client.unity
     guid: 2c6842ddd29c64435a96d5044035cee2
   m_configObjects: {}
