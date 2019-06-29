@@ -7,6 +7,11 @@ public class Agents : MonoBehaviour
     public AgentAI AgentAIPrefab;
     public int AgentAICount;
 
+    void Awake()
+    {
+        Random.InitState(87);
+    }
+
     void Start()
     {
         float range = 4.5f;
