@@ -25,16 +25,9 @@ public class LaserPoint : MonoBehaviour
         {
             // 現在アクティブなコントローラーを取得
             var controller = OVRInput.GetActiveController();
-            if (controller == OVRInput.Controller.RTrackedRemote)
-            {
-                return _RightHandAnchor;
-            }
-            else if (controller == OVRInput.Controller.LTrackedRemote)
-            {
-                return _LeftHandAnchor;
-            }
-            // どちらも取れなければ目の間からビームが出る
-            return _CenterEyeAnchor;
+
+            return _RightHandAnchor;
+          
         }
     }
 

@@ -6,14 +6,17 @@ using UnityEngine.AI;
 public class AgentHuman : MonoBehaviour
 {
     NavMeshAgent _navAgent;
+    ClientPositionReceiver _clientPositionReceiver;
 
     void Start()
     {
         _navAgent = GetComponent<NavMeshAgent>();
+        _clientPositionReceiver = FindObjectOfType<ClientPositionReceiver>();
     }
 
     void Update()
     {
+        /*
         Vector3 direction = Vector3.zero;
 
         if (Input.GetKey(KeyCode.UpArrow))
@@ -39,5 +42,8 @@ public class AgentHuman : MonoBehaviour
             direction = 0.5f * direction;
             _navAgent.destination = _navAgent.nextPosition + direction;
         }
+        */
+
+        _navAgent.destination = new Vector3(_clientPositionReceiver.clientPos.x, 0, _clientPositionReceiver.clientPos.z);
     }
 }
