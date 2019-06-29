@@ -12,7 +12,7 @@ public class CameraTransformSender : MonoBehaviour
     {
         client = FindObjectOfType<uOscClient> ();
         camera = FindObjectOfType<Camera>();
-        SendText("start");
+        SendText("Send from client.");
     }
 
 	void Update () {
