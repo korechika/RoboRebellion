@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using uOSC;
+using UnityEngine.SceneManagement;
 
 public class MessageReceiveFromServer : MonoBehaviour
 {
@@ -38,10 +40,12 @@ public class MessageReceiveFromServer : MonoBehaviour
         if (msg == "serverwon")
         {
             // you lose
+            SceneManager.LoadScene(0);
         }
 
         if (msg == "clientwon")
         {
+            SceneManager.LoadScene(0);
             // you won
         }
 

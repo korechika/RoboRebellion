@@ -9,9 +9,13 @@ public class Agents : MonoBehaviour
 
     bool hasStarted = false;
 
+    private AgentHuman _agentHuman;
+
     void Awake()
     {
         Random.InitState(87);
+        _agentHuman = FindObjectOfType<AgentHuman>();
+        _agentHuman.transform.localScale = Vector3.zero;
     }
 
     void Start()
@@ -23,16 +27,18 @@ public class Agents : MonoBehaviour
     {
         if (!hasStarted)
         {
+            hasStarted = true;
+
             float range = 4.5f;
 
-            for (int i = 0; i < AgentAICount; i++)
+            for (int i = 0; i < 4; i++)
             {
                 var agentAI = Instantiate(AgentAIPrefab);
                 agentAI.transform.parent = this.transform;
                 agentAI.transform.position = range * new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
             }
 
-            hasStarted = true;
+            _agentHuman.transform.localScale = Vector3.one;
         }
     }
 

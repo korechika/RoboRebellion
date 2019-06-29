@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LaserPoint : MonoBehaviour
 {
     GameManager gm;
+    bool result;
     [SerializeField]
     private Transform _RightHandAnchor;
 
@@ -36,7 +38,7 @@ public class LaserPoint : MonoBehaviour
     }
     private void Start()
     {
-        bullet = 2;
+        bullet = 99999;
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         sound = GameObject.Find("Sound").GetComponent<AudioSource>();
 
@@ -44,11 +46,11 @@ public class LaserPoint : MonoBehaviour
     void Update()
     {
 
-        if(bullet <= 0)
+        if(result)
         {
-
-
-            return;
+            if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger) || OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
+                SceneManager.LoadScene(0);
+                return;
         }
 
         var pointer = Pointer;
@@ -74,11 +76,13 @@ public class LaserPoint : MonoBehaviour
                 bullet--;
                 if(hitInfo.transform.name == "AgentHuman" )
                 {
+                    result = true;
                     gm.Result(true);
                 }
 
                 if (bullet <= 0)
                 {
+                    result = true;
                     Destroy(_LaserPointerRenderer);
                     gm.Result(false);
                 }

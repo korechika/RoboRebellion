@@ -8,7 +8,7 @@ public class ClientPositionReceiver : MonoBehaviour
     public Vector3 clientPos { get; private set; }
     public Vector3 clientRot { get; private set; }
     private uOscServer server;
-    GameObject cube;
+    //GameObject cube;
 
     void Awake()
     {
@@ -22,9 +22,9 @@ public class ClientPositionReceiver : MonoBehaviour
         server.onDataReceived.AddListener(OnDataReceived);
         clientPos = Vector3.zero;
         clientRot = Vector3.zero;
-        cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        cube.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-        UpdateTransform(cube);
+        //cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        //cube.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        //UpdateTransform(cube);
     }
 
     void OnDataReceived(Message message)
@@ -48,7 +48,7 @@ public class ClientPositionReceiver : MonoBehaviour
             clientPos = pos;
             clientRot = rot;
             Debug.Log("pos:" + pos + ", rot:" + rot);
-            UpdateTransform(cube);
+            //UpdateTransform(cube);
             // m_onTransformReceived.Invoke (pos, rot);
         } else if (msgs.Length == 1)
         {

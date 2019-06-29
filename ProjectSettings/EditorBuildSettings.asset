@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MultiDeviceConnection/Client.unity
     guid: 2c6842ddd29c64435a96d5044035cee2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/nanaki/Server_nanaki.unity
     guid: 2969eef21e8329e45a218473ae6e1194
   m_configObjects: {}
