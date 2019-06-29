@@ -14,5 +14,19 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+       
+    }
+
+    public void Result(bool flg)
+    {
+        if (flg)
+        {
+
+
+        }else if (!flg)
+        {
+
+        }
+
     }
 }

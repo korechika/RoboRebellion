@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LaserPoint : MonoBehaviour
 {
+    GameManager gm;
     [SerializeField]
     private Transform _RightHandAnchor;
 
@@ -19,6 +20,8 @@ public class LaserPoint : MonoBehaviour
     [SerializeField]
     private LineRenderer _LaserPointerRenderer;
 
+
+    public int bullet;
     private Transform Pointer
     {
         get
@@ -37,9 +40,21 @@ public class LaserPoint : MonoBehaviour
             return _CenterEyeAnchor;
         }
     }
-
+    private void Start()
+    {
+        bullet = 2;
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
     void Update()
     {
+
+        if(bullet <= 0)
+        {
+
+
+            return;
+        }
+
         var pointer = Pointer;
         if (pointer == null || _LaserPointerRenderer == null)
         {
@@ -55,6 +70,20 @@ public class LaserPoint : MonoBehaviour
         if (Physics.Raycast(pointerRay, out hitInfo, _MaxDistance))
         {
             // Rayがヒットしたらそこまで
+            if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
+            {
+                bullet--;
+                if(hitInfo.transform.tag == "Human")
+                {
+                    gm.Result(true);
+                }
+
+                if (bullet <= 0)
+                    gm.Result(false);
+
+                
+
+            }
             _LaserPointerRenderer.SetPosition(1, hitInfo.point);
         }
         else
@@ -63,4 +92,6 @@ public class LaserPoint : MonoBehaviour
             _LaserPointerRenderer.SetPosition(1, pointerRay.origin + pointerRay.direction * _MaxDistance);
         }
     }
+
+   
 }
