@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MultiDeviceConnection/Server.unity
     guid: 693ffb6b60d8745be8a2b08b93df6a0b
+  - enabled: 0
+    path: Assets/UnityARKitPlugin/Examples/ARKit2.0/UnityARObjectAnchor/UnityARObjectAnchor.unity
+    guid: 9b7966300d2d04d8e86ace41d59d178c
   m_configObjects: {}
