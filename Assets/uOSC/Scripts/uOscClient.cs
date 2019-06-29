@@ -11,7 +11,7 @@ public class uOscClient : MonoBehaviour
     private const int MaxQueueSize = 100;
 
     [SerializeField]
-    string address = "127.0.0.1";
+    string address = "172.16.5.133";
 
     [SerializeField]
     int port = 3333;
@@ -28,6 +28,7 @@ public class uOscClient : MonoBehaviour
 
     void OnEnable()
     {
+        // TODO: address を更新
         udp_.StartClient(address, port);
         thread_.Start(UpdateSend);
     }
