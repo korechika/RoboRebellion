@@ -22,6 +22,7 @@ public class LaserPoint : MonoBehaviour
 
 
     public int bullet;
+    private AudioSource sound;
     private Transform Pointer
     {
         get
@@ -37,6 +38,8 @@ public class LaserPoint : MonoBehaviour
     {
         bullet = 2;
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        sound = GameObject.Find("Sound").GetComponent<AudioSource>();
+
     }
     void Update()
     {
@@ -65,8 +68,9 @@ public class LaserPoint : MonoBehaviour
             // Rayがヒットしたらそこまで
             if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
             {
+                sound.Play();
                 bullet--;
-                if(hitInfo.transform.tag == "Human")
+                if(hitInfo.transform.name == "AgentHuman")
                 {
                     gm.Result(true);
                 }
