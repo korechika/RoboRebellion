@@ -8,15 +8,12 @@ public class CameraTransformSender : MonoBehaviour
     uOscClient client;
     Camera camera;
 
-    void Awake()
+    void Start()
     {
         client = FindObjectOfType<uOscClient> ();
         camera = FindObjectOfType<Camera>();
-    }
-
-	void Start () {
         SendText("start");
-	}
+    }
 
 	void Update () {
 		SendTransformToServer (camera.transform.position, camera.transform.rotation.eulerAngles);

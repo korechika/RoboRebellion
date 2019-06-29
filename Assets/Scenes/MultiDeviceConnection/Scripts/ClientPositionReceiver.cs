@@ -7,19 +7,19 @@ public class ClientPositionReceiver : MonoBehaviour
 {
     public Vector3 clientPos { get; private set; }
     public Vector3 clientRot { get; private set; }
-    public uOscServer server;
+    private uOscServer server;
     GameObject cube;
 
     void Awake()
     {
-        // server = FindObjectOfType<uOscServer>();
+        server = FindObjectOfType<uOscServer>();
         if (server == null) {
-            Debug.Log("uOscServer could not be found.");
+            Debug.LogError("uOscServer could not be found.");
         }
-        server.onDataReceived.AddListener(OnDataReceived);
     }
 
     void Start() {
+        server.onDataReceived.AddListener(OnDataReceived);
         clientPos = Vector3.zero;
         clientRot = Vector3.zero;
         cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
