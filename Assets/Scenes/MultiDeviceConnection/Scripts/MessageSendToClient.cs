@@ -25,7 +25,7 @@ public class MessageSendToClient : MonoBehaviour
         }
     }
 
-    void SendText(string text)
+    public void SendText(string text)
     {
         client.Send("localhost", text);
     }

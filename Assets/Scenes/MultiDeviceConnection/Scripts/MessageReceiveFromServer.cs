@@ -40,6 +40,11 @@ public class MessageReceiveFromServer : MonoBehaviour
             // you lose
         }
 
+        if (msg == "clientwon")
+        {
+            // you won
+        }
+
         Debug.Log(msg);
     }
 }
