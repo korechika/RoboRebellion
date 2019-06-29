@@ -20,8 +20,8 @@ public class TeleportInputHandlerAvatarTouch : TeleportInputHandlerHMD
 	/// <summary>
 	/// This needs to be assigned a reference to the OvrAvatar for the local player. The code will search for an avatar if this is null, but it's suggested to assign it in the editor.
 	/// </summary>
-	[Tooltip("This needs to be assigned a reference to the OvrAvatar for the local player. The code will search for an avatar if this is null, but it's suggested to assign it in the editor.")]
-	public OvrAvatar Avatar;
+	// [Tooltip("This needs to be assigned a reference to the OvrAvatar for the local player. The code will search for an avatar if this is null, but it's suggested to assign it in the editor.")]
+	// public OvrAvatar Avatar;
 
 	/// <summary>
 	/// The avatar touch input handler supports three different modes for controlling teleports.
@@ -111,12 +111,12 @@ public class TeleportInputHandlerAvatarTouch : TeleportInputHandlerHMD
 
 	void Start ()
     {
-		if (Avatar == null)
-		{
-			Debug.LogWarning("Avatar not assigned. Searching hierarchy. Please configure the Avatar before running to improve performance.");
-			Avatar = GameObject.FindObjectOfType<OvrAvatar>();
-			Assert.IsNotNull(Avatar);
-		}
+		// if (Avatar == null)
+		// {
+		// 	Debug.LogWarning("Avatar not assigned. Searching hierarchy. Please configure the Avatar before running to improve performance.");
+		// 	Avatar = GameObject.FindObjectOfType<OvrAvatar>();
+		// 	Assert.IsNotNull(Avatar);
+		// }
 	}
 
 	/// <summary>
@@ -267,14 +267,14 @@ public class TeleportInputHandlerAvatarTouch : TeleportInputHandlerHMD
 		return LocomotionTeleport.TeleportIntentions.None;
 	}
 
-	public override void GetAimData(out Ray aimRay)
-	{
-		OVRInput.Controller sourceController = AimingController;
-		if(sourceController == OVRInput.Controller.Touch)
-		{
-			sourceController = InitiatingController;
-		}
-		Transform t = (sourceController == OVRInput.Controller.LTouch) ? Avatar.ControllerLeft.transform : Avatar.ControllerRight.transform;
-		aimRay = new Ray(t.position, t.forward);
-	}
+	// public override void GetAimData(out Ray aimRay)
+	// {
+	// 	OVRInput.Controller sourceController = AimingController;
+	// 	if(sourceController == OVRInput.Controller.Touch)
+	// 	{
+	// 		sourceController = InitiatingController;
+	// 	}
+	// 	Transform t = (sourceController == OVRInput.Controller.LTouch) ? Avatar.ControllerLeft.transform : Avatar.ControllerRight.transform;
+	// 	aimRay = new Ray(t.position, t.forward);
+	// }
 }
